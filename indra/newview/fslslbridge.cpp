@@ -1488,7 +1488,7 @@ bool FSLSLBridge::isItemAttached(const LLUUID& iID)
 
 void FSLSLBridge::setupFSCategory(inventory_func_type callback)
 {
-    if (LLUUID fsCatID = gInventory.findCategoryByName(ROOT_FIRESTORM_FOLDER); !fsCatID.isNull())
+    if (LLUUID fsCatID = gInventory.findCategoryByName(ROOT_FINALVIEWER_FOLDER); !fsCatID.isNull())
     {
         LLInventoryModel::item_array_t* items;
         LLInventoryModel::cat_array_t* cats;
@@ -1514,7 +1514,7 @@ void FSLSLBridge::setupFSCategory(inventory_func_type callback)
     }
     else
     {
-        gInventory.createNewCategory(gInventory.getRootFolderID(), LLFolderType::FT_NONE, ROOT_FIRESTORM_FOLDER, [this, callback](const LLUUID& new_cat_id)
+        gInventory.createNewCategory(gInventory.getRootFolderID(), LLFolderType::FT_NONE, ROOT_FINALVIEWER_FOLDER, [this, callback](const LLUUID& new_cat_id)
             {
                 gInventory.createNewCategory(new_cat_id, LLFolderType::FT_NONE, FS_BRIDGE_FOLDER, [this, callback](const LLUUID& new_cat_id)
                     {
@@ -1538,7 +1538,7 @@ LLUUID FSLSLBridge::findFSCategory()
         return mBridgeFolderID;
     }
 
-    if (LLUUID fsCatID = gInventory.findCategoryByName(ROOT_FIRESTORM_FOLDER); !fsCatID.isNull())
+    if (LLUUID fsCatID = gInventory.findCategoryByName(ROOT_FINALVIEWER_FOLDER); !fsCatID.isNull())
     {
         LLInventoryModel::item_array_t* items;
         LLInventoryModel::cat_array_t* cats;
