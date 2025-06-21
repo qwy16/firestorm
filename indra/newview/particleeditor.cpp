@@ -31,7 +31,7 @@
 #include "llcombobox.h"
 #include "lldir.h"
 #include "llfoldertype.h"
-#include "llinventoryfunctions.h"   // for ROOT_FIRESTORM_FOLDER
+#include "llinventoryfunctions.h"   // for ROOT_FINALVIEWER_FOLDER
 #include "llinventorytype.h"
 #include "lllineeditor.h"
 #include "llnotificationsutil.h"
@@ -533,12 +533,12 @@ void ParticleEditor::onCopyButtonClicked()
 void ParticleEditor::onInjectButtonClicked()
 {
     // first try to find the #Firestorm folder
-    LLUUID categoryID = gInventory.findCategoryByName(ROOT_FIRESTORM_FOLDER);
+    LLUUID categoryID = gInventory.findCategoryByName(ROOT_FINALVIEWER_FOLDER);
 
     // if no #Firestorm folder was found, create one
     if (categoryID.isNull())
     {
-        gInventory.createNewCategory(gInventory.getRootFolderID(), LLFolderType::FT_NONE, ROOT_FIRESTORM_FOLDER, [this](const LLUUID& new_cat_id)
+        gInventory.createNewCategory(gInventory.getRootFolderID(), LLFolderType::FT_NONE, ROOT_FINALVIEWER_FOLDER, [this](const LLUUID& new_cat_id)
             {
                 createScriptInventoryItem(new_cat_id);
             });
