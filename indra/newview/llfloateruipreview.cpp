@@ -1088,10 +1088,10 @@ void LLFloaterUIPreview::getExecutablePath(const std::vector<std::string>& filen
         {
             CFStringRef executable_cfstr = (CFStringRef)CFDictionaryGetValue(bundleInfoDict, CFSTR("CFBundleExecutable"));  // get the name of the actual executable (e.g. TextEdit or firefox-bin)
             int max_file_length = 256;                                                                                      // (max file name length is 255 in OSX)
-            char executable_buf[max_file_length];
-            if(CFStringGetCString(executable_cfstr, executable_buf, max_file_length, kCFStringEncodingMacRoman))            // convert CFStringRef to char*
+            std::vector<char> executable_buf(max_file_length);
+            if(CFStringGetCString(executable_cfstr, executable_buf.data(), max_file_length, kCFStringEncodingMacRoman))            // convert CFStringRef to char*
             {
-                executable_path += std::string("/Contents/MacOS/") + std::string(executable_buf);                           // append path to executable directory and then executable name to exec path
+                executable_path += std::string("/Contents/MacOS/") + std::string(executable_buf.data());                           // append path to executable directory and then executable name to exec path
             }
             else
             {
