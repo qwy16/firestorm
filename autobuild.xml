@@ -3314,7 +3314,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--build</string>
                   <string>--version</string>
                   <string>--opensim</string>
@@ -3326,7 +3326,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--config</string>
                   <string>--version</string>
                   <string>--opensim</string>
@@ -3343,7 +3343,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--build</string>
                   <string>--version</string>
                   <string>--opensim</string>
@@ -3356,7 +3356,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--config</string>
                   <string>--version</string>
                   <string>--opensim</string>
@@ -3374,7 +3374,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--build</string>
                   <string>--version</string>
                   <string>--opensim</string>
@@ -3387,7 +3387,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--config</string>
                   <string>--version</string>
                   <string>--opensim</string>
@@ -3405,7 +3405,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--build</string>
                   <string>--version</string>
                   <string>--opensim</string>
@@ -3417,7 +3417,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--config</string>
                   <string>--version</string>
                   <string>--opensim</string>
@@ -3434,7 +3434,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--btype RelWithDebInfo</string>
                   <string>--build</string>
                   <string>--version</string>
@@ -3447,7 +3447,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--btype RelWithDebInfo</string>
                   <string>--config</string>
                   <string>--version</string>
@@ -3465,7 +3465,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--btype RelWithDebInfo</string>
                   <string>--build</string>
                   <string>--version</string>
@@ -3478,7 +3478,7 @@ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors</string>
                 <string>bash</string>
                 <key>options</key>
                 <array>
-                  <string>../scripts/configure_firestorm.sh</string>
+                  <string>../scripts/configure_finalviewer.sh</string>
                   <string>--btype RelWithDebInfo</string>
                   <string>--config</string>
                   <string>--version</string>

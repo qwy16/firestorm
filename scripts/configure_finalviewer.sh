@@ -67,7 +67,7 @@ showUsage()
     echo
     echo "  --clean                  : Remove past builds & configuration"
     echo "  --config                 : Generate a new architecture-specific config"
-    echo "  --build                  : Build Firestorm"
+    echo "  --build                  : Build Finalviewer"
     echo "  --version                : Update version number"
     echo "  --chan  [Release|Beta|Private]   : Private is the default, sets channel"
     echo "  --btype [Release|RelWithDebInfo] : Release is default, whether to use symbols"
@@ -309,7 +309,7 @@ if [ ! -d `dirname "$LOG"` ] ; then
         mkdir -p `dirname "$LOG"`
 fi
 
-echo -e "configure_firestorm.sh" > "$LOG"
+echo -e "configure_finalviewer.sh" > "$LOG"
 echo -e "       PLATFORM: $TARGET_PLATFORM"                                    | tee -a "$LOG"
 echo -e "            KDU: `b2a $WANTS_KDU`"                                    | tee -a "$LOG"
 echo -e "     FMODSTUDIO: `b2a $WANTS_FMODSTUDIO`"                             | tee -a "$LOG"
@@ -391,7 +391,7 @@ if [ -z $CHANNEL ] ; then
 else
     CHANNEL=`echo $CHANNEL | sed -e "s/[^a-zA-Z0-9\-]*//g"` # strip out difficult characters from channel
 fi
-CHANNEL="Firestorm-$CHANNEL"
+CHANNEL="Finalviewer-$CHANNEL"
 
 if [ \( $WANTS_CLEAN -eq $TRUE \) -a \( $WANTS_BUILD -eq $FALSE \) ] ; then
     echo "Cleaning $TARGET_PLATFORM...."
@@ -522,14 +522,14 @@ if [ $WANTS_CONFIG -eq $TRUE ] ; then
         fi
         # This name is consumed by indra/newview/CMakeLists.txt
         if [ $TARGET_PLATFORM == "linux" ] ; then
-            VIEWER_SYMBOL_FILE="${BUILD_DIR}/newview/firestorm-symbols-${TARGET_PLATFORM}-${AUTOBUILD_ADDRSIZE}.tar.bz2"
+            VIEWER_SYMBOL_FILE="${BUILD_DIR}/newview/finalviewer-symbols-${TARGET_PLATFORM}-${AUTOBUILD_ADDRSIZE}.tar.bz2"
         else
-            VIEWER_SYMBOL_FILE="${BUILD_DIR}/newview/$BTYPE/firestorm-symbols-${TARGET_PLATFORM}-${AUTOBUILD_ADDRSIZE}.tar.bz2"
+            VIEWER_SYMBOL_FILE="${BUILD_DIR}/newview/$BTYPE/finalviewer-symbols-${TARGET_PLATFORM}-${AUTOBUILD_ADDRSIZE}.tar.bz2"
         fi
         CRASH_REPORTING="-DRELEASE_CRASH_REPORTING=ON"
         if [ ! -z $CHANNEL_SIMPLE ]
         then
-            CRASH_REPORTING="$CRASH_REPORTING -DUSE_BUGSPLAT=On -DBUGSPLAT_DB=firestorm_"`echo $CHANNEL_SIMPLE | tr [:upper:] [:lower:] | sed -e 's/x64//' | sed 's/[^A-Za-z0-9]//g'`
+            CRASH_REPORTING="$CRASH_REPORTING -DUSE_BUGSPLAT=On -DBUGSPLAT_DB=finalviewer_"`echo $CHANNEL_SIMPLE | tr [:upper:] [:lower:] | sed -e 's/x64//' | sed 's/[^A-Za-z0-9]//g'`
         fi
     else
         CRASH_REPORTING="-DRELEASE_CRASH_REPORTING:BOOL=OFF"
@@ -594,7 +594,7 @@ if [ $WANTS_CONFIG -eq $TRUE ] ; then
 
     if [ $TARGET_PLATFORM == "windows" -a $USE_VSTOOL -eq $TRUE ] ; then
         echo "Setting startup project via vstool"
-        ../indra/tools/vstool/VSTool.exe --solution Firestorm.sln --startup firestorm-bin --workingdir firestorm-bin "..\\..\\indra\\newview" --config $BTYPE
+        ../indra/tools/vstool/VSTool.exe --solution Finalviewer.sln --startup finalviewer-bin --workingdir finalviewer-bin "..\\..\\indra\\newview" --config $BTYPE
     fi
         # Check the return code of the build command
     if [ $? -ne 0 ]; then
@@ -610,7 +610,7 @@ if [ $WANTS_BUILD -eq $TRUE ] ; then
         else
             JOBS="-jobs $JOBS"
         fi
-        xcodebuild -configuration $BTYPE -project Firestorm.xcodeproj $JOBS 2>&1 | tee -a "$LOG"
+        xcodebuild -configuration $BTYPE -project Finalviewer.xcodeproj $JOBS 2>&1 | tee -a "$LOG"
     elif [ $TARGET_PLATFORM == "linux" ] ; then
         if [ $JOBS == "0" ] ; then
             JOBS=`cat /proc/cpuinfo | grep processor | wc -l`
@@ -622,8 +622,8 @@ if [ $WANTS_BUILD -eq $TRUE ] ; then
             make -j $JOBS | tee -a "$LOG"
         fi
     elif [ $TARGET_PLATFORM == "windows" ] ; then
-        msbuild.exe Firestorm.sln -p:Configuration=${BTYPE} -flp:LogFile="logs\\FirestormBuild_win-${AUTOBUILD_ADDRSIZE}.log" \
-            -flp1:"errorsonly;LogFile=logs\\FirestormBuild_win-${AUTOBUILD_ADDRSIZE}.err" -p:Platform=${AUTOBUILD_WIN_VSPLATFORM} -t:Build -p:useenv=true \
+        msbuild.exe Finalviewer.sln -p:Configuration=${BTYPE} -flp:LogFile="logs\\FinalviewerBuild_win-${AUTOBUILD_ADDRSIZE}.log" \
+            -flp1:"errorsonly;LogFile=logs\\FinalviewerBuild_win-${AUTOBUILD_ADDRSIZE}.err" -p:Platform=${AUTOBUILD_WIN_VSPLATFORM} -t:Build -p:useenv=true \
             -verbosity:normal -toolsversion:Current -p:"VCBuildAdditionalOptions= /incremental"
     fi
     # Check the return code of the build command
