@@ -351,9 +351,9 @@
       <combo_box.drop_down_button
         font="SansSerifLarge"/>
       <combo_box.item
-        label="Firestorm"
-        name="Firestorm"
-        value="settings_firestorm.xml" />
+        label="Finalviewer"
+        name="Finalviewer"
+        value="settings_finalviewer.xml" />
       <combo_box.item
         label="Phoenix"
         name="Phoenix"
