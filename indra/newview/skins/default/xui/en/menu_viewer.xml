@@ -2472,40 +2472,40 @@
        </menu_item_call>
        <menu_item_separator/>
     	<menu_item_call
-             label="Firestorm Blog"
-             name="Firestorm Blog">
+             label="Finalviewer Blog"
+             name="Finalviewer Blog">
              <menu_item_call.on_click
              function="PromptShowURL"
              name="firestorm_blog_url"
              parameter="WebLaunchExternalTarget,https://www.firestormviewer.org/" />
        </menu_item_call>
     	<menu_item_call
-             label="Firestorm Flickr"
-             name="Firestorm Flickr">
+             label="Finalviewer Flickr"
+             name="Finalviewer Flickr">
              <menu_item_call.on_click
              function="PromptShowURL"
              name="firestorm_flickr_url"
              parameter="WebLaunchExternalTarget,http://www.flickr.com/groups/firestormviewer/pool/" />
        </menu_item_call>
     	<menu_item_call
-             label="Firestorm YouTube"
-             name="Firestorm YouTube">
+             label="Finalviewer YouTube"
+             name="Finalviewer YouTube">
              <menu_item_call.on_click
              function="PromptShowURL"
              name="firestorm_youtube_url"
              parameter="WebLaunchExternalTarget,http://www.youtube.com/user/PhoenixViewerSL" />
        </menu_item_call>
     	<menu_item_call
-             label="Firestorm Twitter"
-             name="Firestorm Twitter">
+             label="Finalviewer Twitter"
+             name="Finalviewer Twitter">
              <menu_item_call.on_click
              function="PromptShowURL"
              name="firestorm_twitter_url"
              parameter="WebLaunchExternalTarget,https://twitter.com/phoenixviewersl" />
        </menu_item_call>
     	<menu_item_call
-             label="Firestorm Plurk"
-             name="Firestorm Plurk">
+             label="Finalviewer Plurk"
+             name="Finalviewer Plurk">
              <menu_item_call.on_click
              function="PromptShowURL"
              name="firestorm_plurk_url"
@@ -2514,7 +2514,7 @@
        <menu_item_separator/>
        <menu_item_call
              label="Message of the day"
-             name="Firestorm MoTD">
+             name="Finalviewer MoTD">
              <menu_item_call.on_click
              function="Advanced.ToggleHUDInfo"
              parameter="motd" />
@@ -2540,8 +2540,8 @@
         </menu_item_check>
         
         <menu_item_call
-         label="Firestorm Wiki"
-         name="Firestorm Wiki"
+         label="Finalviewer Wiki"
+         name="Finalviewer Wiki"
 	     shortcut="F1">
              <menu_item_call.on_click
              function="PromptShowURL"
@@ -2559,7 +2559,7 @@
         </menu_item_call>
 	   
         <menu_item_call
-         label="Join Firestorm Support Group"
+         label="Join Finalviewer Support Group"
          name="firestorm_support_group">
             <menu_item_call.on_click
              function="Advanced.WebBrowserTest"
@@ -2570,8 +2570,8 @@
         </menu_item_call>
 
         <menu_item_call
-         label="Firestorm Classes Schedule"
-         name="Firestorm Classes Schedule">
+         label="Finalviewer Classes Schedule"
+         name="Finalviewer Classes Schedule">
              <menu_item_call.on_click
              function="PromptShowURL"
              name="wiki_classes_url"
@@ -2579,8 +2579,8 @@
         </menu_item_call>
 
         <menu_item_call
-         label="Firestorm Events Calendar"
-         name="Firestorm Events Calendar">
+         label="Finalviewer Events Calendar"
+         name="Finalviewer Events Calendar">
              <menu_item_call.on_click
              function="PromptShowURL"
              name="events_calendar_url"
