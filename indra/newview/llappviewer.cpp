@@ -3111,7 +3111,7 @@ bool LLAppViewer::initConfiguration()
         // <FS>
         if (gSavedSettings.getString("SessionSettingsFile").empty())
         {
-            gSavedSettings.setString("SessionSettingsFile", "settings_firestorm.xml");
+            gSavedSettings.setString("SessionSettingsFile", "settings_finalviewer.xml");
         }
         // </FS>
 
