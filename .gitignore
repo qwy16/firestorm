@@ -18,6 +18,9 @@
 *.code-workspace
 *~
 
+.idea
+.DF_Store
+
 # Specific paths and/or names
 CMakeCache.txt
 cmake_install.cmake

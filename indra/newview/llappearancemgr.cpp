@@ -2851,12 +2851,19 @@ void LLAppearanceMgr::updateAppearanceFromCOF(bool enforce_item_restrictions,
     dumpItemArray(wear_items,"asset_dump: wear_item");
     dumpItemArray(obj_items,"asset_dump: obj_item");
 
-    LLViewerInventoryCategory *cof = gInventory.getCategory(current_outfit_id);
+    LLViewerInventoryCategory* cof = gInventory.getCategory(current_outfit_id);
+    if (!cof)
+    {
+        LL_WARNS() << "Failed to retrieve COF category for ID: " << current_outfit_id << ", retrying on next idle." << LL_ENDL;
+        gIdleCallbacks.addFunction(&LLAppearanceMgr::updateAppearanceFromCOF, nullptr);
+        return;
+    }
+
     if (!gInventory.isCategoryComplete(current_outfit_id))
     {
         LL_WARNS() << "COF info is not complete. Version " << cof->getVersion()
-                << " descendent_count " << cof->getDescendentCount()
-                << " viewer desc count " << cof->getViewerDescendentCount() << LL_ENDL;
+                   << " descendent_count " << cof->getDescendentCount()
+                   << " viewer desc count " << cof->getViewerDescendentCount() << LL_ENDL;
     }
     if(!wear_items.size())
     {
