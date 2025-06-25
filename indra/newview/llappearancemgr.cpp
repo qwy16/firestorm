@@ -2698,6 +2698,12 @@ void get_sorted_base_and_cof_items(LLInventoryModel::item_array_t& cof_item_arra
 }
 
 
+// Static thunk for updateAppearanceFromCOF to use with gIdleCallbacks
+static void updateAppearanceFromCOFThunk(void* data)
+{
+    LLAppearanceMgr::instance().updateAppearanceFromCOF();
+}
+
 void LLAppearanceMgr::updateAppearanceFromCOF(bool enforce_item_restrictions,
                                               bool enforce_ordering,
                                               nullary_func_t post_update_func)
@@ -2855,7 +2861,7 @@ void LLAppearanceMgr::updateAppearanceFromCOF(bool enforce_item_restrictions,
     if (!cof)
     {
         LL_WARNS() << "Failed to retrieve COF category for ID: " << current_outfit_id << ", retrying on next idle." << LL_ENDL;
-        gIdleCallbacks.addFunction(&LLAppearanceMgr::updateAppearanceFromCOF, nullptr);
+        gIdleCallbacks.addFunction(&updateAppearanceFromCOFThunk, nullptr);
         return;
     }
 
