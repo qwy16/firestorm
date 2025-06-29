@@ -35,7 +35,7 @@
 #include "llanimationstates.h"
 #include "llassetstorage.h"
 #include "llfilesystem.h"
-#include "llinventoryfunctions.h"       // for ROOT_FIRESTORM_FOLDER
+#include "llinventoryfunctions.h"       // for ROOT_FINALVIEWER_FOLDER
 #include "llinventorymodel.h"
 #include "llnotificationsutil.h"
 #include "llstring.h"
@@ -2071,12 +2071,12 @@ void AOEngine::tick()
     }
     // </FS:ND>
 
-    const LLUUID categoryID = gInventory.findCategoryByName(ROOT_FIRESTORM_FOLDER);
+    const LLUUID categoryID = gInventory.findCategoryByName(ROOT_FINALVIEWER_FOLDER);
 
     if (categoryID.isNull())
     {
-        LL_WARNS("AOEngine") << "no " << ROOT_FIRESTORM_FOLDER << " folder yet. Creating ..." << LL_ENDL;
-        gInventory.createNewCategory(gInventory.getRootFolderID(), LLFolderType::FT_NONE, ROOT_FIRESTORM_FOLDER);
+        LL_WARNS("AOEngine") << "no " << ROOT_FINALVIEWER_FOLDER << " folder yet. Creating ..." << LL_ENDL;
+        gInventory.createNewCategory(gInventory.getRootFolderID(), LLFolderType::FT_NONE, ROOT_FINALVIEWER_FOLDER);
         mAOFolder.setNull();
     }
     else

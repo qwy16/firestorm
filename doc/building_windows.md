@@ -1,12 +1,12 @@
 # Build instructions for Windows
 
-This page describes all necessary steps to build the Firestorm viewer for Windows. For building instructions up to (and including) release 6.5.3, see the archived version for [building with Python 2.7](https://wiki.firestormviewer.org/archive:fs_compiling_firestorm_windows_py_27).
+This page describes all necessary steps to build the Finalviewer viewer for Windows. For building instructions up to (and including) release 6.5.3, see the archived version for [building with Python 2.7](https://wiki.finalviewerviewer.org/archive:fs_compiling_finalviewer_windows_py_27).
 
 > [!WARNING]
-> Please note that we do not give support for compiling the viewer on your own. However, there is a self-compilers group in Second Life that can be joined to ask questions related to compiling the viewer: [Firestorm Self Compilers](https://tinyurl.com/firestorm-self-compilers)
+> Please note that we do not give support for compiling the viewer on your own. However, there is a self-compilers group in Second Life that can be joined to ask questions related to compiling the viewer: [Finalviewer Self Compilers](https://tinyurl.com/finalviewer-self-compilers)
 
 > [!IMPORTANT]
-> With the [merge of Linden Lab release 6.6.16](https://github.com/FirestormViewer/phoenix-firestorm/commit/b64793e2b0d14e44274335c874660af9f679f7f8) it is **NOT** possible to create 32bit builds anymore! Only 64bit builds are possible going forward!
+> With the [merge of Linden Lab release 6.6.16](https://github.com/FinalviewerViewer/phoenix-finalviewer/commit/b64793e2b0d14e44274335c874660af9f679f7f8) it is **NOT** possible to create 32bit builds anymore! Only 64bit builds are possible going forward!
 
 ## Install required development tools
 
@@ -108,14 +108,14 @@ If they all report sensible values and not "Command not found" errors, then you 
 - Not required unless you need to build an actual viewer installer for distribution, or change the NSIS installer package logic itself
   
 > [!IMPORTANT]
-> If you want to package the viewer built on a revision prior to the [Bugsplat merge](https://github.com/FirestormViewer/phoenix-firestorm/commit/a399c6778579ac7c8965737088c275dde1371c9e), you must install the Unicode version of NSIS [from here](http://www.scratchpaper.com) - the installer from the NSIS website **WILL NOT** work!
+> If you want to package the viewer built on a revision prior to the [Bugsplat merge](https://github.com/FinalviewerViewer/phoenix-finalviewer/commit/a399c6778579ac7c8965737088c275dde1371c9e), you must install the Unicode version of NSIS [from here](http://www.scratchpaper.com) - the installer from the NSIS website **WILL NOT** work!
 
 ## Setup viewer build variables
 
 In order to make it easier to build collections of related packages (such as the viewer and all the library packages that it imports) with the same compilation options, Autobuild expects a file of variable definitions. This can be set using the environmenat variable AUTOBUILD_VARIABLES_FILE.
 
 - Clone the build variables repository: 
-  `git clone https://github.com/FirestormViewer/fs-build-variables.git <path-to-your-variables-file>`
+  `git clone https://github.com/FinalviewerViewer/fs-build-variables.git <path-to-your-variables-file>`
 - Set the environment variable AUTOBUILD_VARIABLES_FILE to
   `<path-to-your-variables-file>\variables`
 
@@ -126,12 +126,12 @@ In order to make it easier to build collections of related packages (such as the
 
 ## Set up your source code tree
 
-Plan your directory structure ahead of time. If you are going to be producing changes or patches you will be cloning a copy of an unaltered source code tree for every change or patch you make, so you might want to have all this work stored in its own directory. If you are a casual compiler and won't be producing any changes, you can use one directory. For this document, it is assumed that you created a folder c:\firestorm.
+Plan your directory structure ahead of time. If you are going to be producing changes or patches you will be cloning a copy of an unaltered source code tree for every change or patch you make, so you might want to have all this work stored in its own directory. If you are a casual compiler and won't be producing any changes, you can use one directory. For this document, it is assumed that you created a folder c:\finalviewer.
 
 ```
 c:
-cd \firestorm
-git clone https://github.com/FirestormViewer/phoenix-firestorm.git
+cd \finalviewer
+git clone https://github.com/FinalviewerViewer/phoenix-finalviewer.git
 ```
 
 ## Prepare third party libraries
@@ -150,8 +150,8 @@ If you want to use FMOD Studio to play sounds within the viewer, you will have t
 
 ```
 c:
-cd \firestorm
-git clone https://github.com/FirestormViewer/3p-fmodstudio.git
+cd \finalviewer
+git clone https://github.com/FinalviewerViewer/3p-fmodstudio.git
 ```
 
 - After you have cloned the repository, copy the downloaded FMOD Studio installer file into the root of the repository
@@ -166,7 +166,7 @@ Continue on the Windows command line:
 
 ```
 c:
-cd \firestorm\3p-fmodstudio
+cd \finalviewer\3p-fmodstudio
 autobuild build -A 64 --all
 autobuild package -A 64 --results-file result.txt
 ```
@@ -176,13 +176,13 @@ While running the Autobuild build command, Windows might ask if you want to allo
 Near the end of the output you will see the package name written:
 
 ```
-wrote  C:\firestorm\3p-fmodstudio\fmodstudio-{version#}-windows64-{build_id}.tar.bz2''
+wrote  C:\finalviewer\3p-fmodstudio\fmodstudio-{version#}-windows64-{build_id}.tar.bz2''
 ```
 
 where {version#} is the version of FMOD Studio (like 2.01.02) and {build_id} is an internal build id of the package. Additionally, a file `result.txt` has been created containing the md5 hash value of the package file, which you will need in the next step.
 
 ```
-cd \firestorm\phoenix-firestorm
+cd \finalviewer\phoenix-finalviewer
 cp autobuild.xml my_autobuild.xml
 set AUTOBUILD_CONFIG_FILE=my_autobuild.xml
 ```
@@ -193,7 +193,7 @@ Copy the FMOD Studio path and md5 value from the package process into this comma
 
 For example:
 
-`autobuild installables edit fmodstudio platform=windows64 hash=a0d1821154e7ce5c418e3cdc2f26f3fc url=file:///C:/firestorm/3p-fmodstudio/fmodstudio-2.01.02-windows-192171947.tar.bz2`
+`autobuild installables edit fmodstudio platform=windows64 hash=a0d1821154e7ce5c418e3cdc2f26f3fc url=file:///C:/finalviewer/3p-fmodstudio/fmodstudio-2.01.02-windows-192171947.tar.bz2`
 
 > [!NOTE]
 > Having to copy autobuild.xml and modify the copy from within a cloned repository is a lot of work for every repository you make, but this is the only way to guarantee you pick up upstream changes to autobuild.xml and do not send up a modified autobuild.xml when you do a git push.
@@ -210,13 +210,13 @@ Then enter:
 
 ```
 c:
-cd \firestorm\phoenix-firestorm
+cd \finalviewer\phoenix-finalviewer
 autobuild configure -A 64 -c ReleaseFS_open
 ```
 
-This will configure Firestorm to be built with all defaults and without third party libraries.
+This will configure Finalviewer to be built with all defaults and without third party libraries.
 
-Available premade firestorm-specific build targets:
+Available premade finalviewer-specific build targets:
 
 ```
 ReleaseFS             (includes KDU, FMOD)
@@ -267,9 +267,9 @@ Compiling will take quite a bit of time.
 
 ### Building from within Visual Studio
 
-Inside the Firestorm source folder, you will find a folder named build-vc170-\<architecture\>, with \<architecture\> either being 32 or 64, depending on what you chose during the configuration step. Inside the folder is the Visual Studio solution file for Firestorm, called Firestorm.sln.
+Inside the Finalviewer source folder, you will find a folder named build-vc170-\<architecture\>, with \<architecture\> either being 32 or 64, depending on what you chose during the configuration step. Inside the folder is the Visual Studio solution file for Finalviewer, called Finalviewer.sln.
 
-- Double-click Firestorm.sln to open the Firestorm solution in Visual Studio.
+- Double-click Finalviewer.sln to open the Finalviewer solution in Visual Studio.
 - From the menu, choose Build -> Build Solution
 - Wait until the build is finished
 

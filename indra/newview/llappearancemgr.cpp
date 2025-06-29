@@ -2698,6 +2698,12 @@ void get_sorted_base_and_cof_items(LLInventoryModel::item_array_t& cof_item_arra
 }
 
 
+// Static thunk for updateAppearanceFromCOF to use with gIdleCallbacks
+static void updateAppearanceFromCOFThunk(void* data)
+{
+    LLAppearanceMgr::instance().updateAppearanceFromCOF();
+}
+
 void LLAppearanceMgr::updateAppearanceFromCOF(bool enforce_item_restrictions,
                                               bool enforce_ordering,
                                               nullary_func_t post_update_func)
@@ -2851,12 +2857,19 @@ void LLAppearanceMgr::updateAppearanceFromCOF(bool enforce_item_restrictions,
     dumpItemArray(wear_items,"asset_dump: wear_item");
     dumpItemArray(obj_items,"asset_dump: obj_item");
 
-    LLViewerInventoryCategory *cof = gInventory.getCategory(current_outfit_id);
+    LLViewerInventoryCategory* cof = gInventory.getCategory(current_outfit_id);
+    if (!cof)
+    {
+        LL_WARNS() << "Failed to retrieve COF category for ID: " << current_outfit_id << ", retrying on next idle." << LL_ENDL;
+        gIdleCallbacks.addFunction(&updateAppearanceFromCOFThunk, nullptr);
+        return;
+    }
+
     if (!gInventory.isCategoryComplete(current_outfit_id))
     {
         LL_WARNS() << "COF info is not complete. Version " << cof->getVersion()
-                << " descendent_count " << cof->getDescendentCount()
-                << " viewer desc count " << cof->getViewerDescendentCount() << LL_ENDL;
+                   << " descendent_count " << cof->getDescendentCount()
+                   << " viewer desc count " << cof->getViewerDescendentCount() << LL_ENDL;
     }
     if(!wear_items.size())
     {

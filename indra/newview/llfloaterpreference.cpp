@@ -1969,10 +1969,10 @@ void LLFloaterPreference::changeExternalEditorPath(const std::vector<std::string
         {
             CFStringRef executable_cfstr = (CFStringRef)CFDictionaryGetValue(bundleInfoDict, CFSTR("CFBundleExecutable"));  // get the name of the actual executable (e.g. TextEdit or firefox-bin)
             int max_file_length = 256;                                                                                      // (max file name length is 255 in OSX)
-            char executable_buf[max_file_length];
-            if (CFStringGetCString(executable_cfstr, executable_buf, max_file_length, kCFStringEncodingMacRoman))           // convert CFStringRef to char*
+            std::vector<char> executable_buf(max_file_length);
+            if (CFStringGetCString(executable_cfstr, executable_buf.data(), max_file_length, kCFStringEncodingMacRoman))           // convert CFStringRef to char*
             {
-                executable_path += std::string("/Contents/MacOS/") + std::string(executable_buf);                           // append path to executable directory and then executable name to exec path
+                executable_path += std::string("/Contents/MacOS/") + std::string(executable_buf.data());                           // append path to executable directory and then executable name to exec path
             }
             else
             {
@@ -5724,7 +5724,7 @@ void FSPanelPreferenceBackup:: doRestoreSettings(const LLSD& notification, const
         // start clean
         LL_INFOS("SettingsBackup") << "clearing global settings" << LL_ENDL;
         gSavedSettings.resetToDefaults();
-        LLFeatureManager::getInstance()->applyRecommendedSettings();  
+        LLFeatureManager::getInstance()->applyRecommendedSettings();
 
         // run restore on global controls
         LL_INFOS("SettingsBackup") << "restoring global settings from backup" << LL_ENDL;
